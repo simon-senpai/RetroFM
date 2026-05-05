@@ -7,6 +7,10 @@
   align-items: center;
   padding: 16px 20px 8px;
   flex-shrink: 0;
+  -webkit-app-region: drag;
+}
+#speaking-header button {
+  -webkit-app-region: no-drag;
 }
 #speaking-status {
   font-size: 9px;

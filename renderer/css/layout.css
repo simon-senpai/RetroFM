@@ -18,6 +18,10 @@
   align-items: center;
   padding: 16px 20px 10px;
   flex-shrink: 0;
+  -webkit-app-region: drag;
+}
+.nav button, .nav a {
+  -webkit-app-region: no-drag;
 }
 .logo {
   display: flex;
