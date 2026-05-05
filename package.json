@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "NODE_ENV=development electron .",
-    "build": "electron-builder"
+    "build": "electron-packager . RetroFM --platform=win32 --arch=x64 --out=dist/packaged --overwrite --ignore=\"^/(dist|reference|docs|\\.superpowers|\\.claude)\""
   },
   "dependencies": {
     "express": "^4.19.2",
