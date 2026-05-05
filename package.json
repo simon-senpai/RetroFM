@@ -5,8 +5,8 @@
   "main": "electron/main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder",
-    "dev": "NODE_ENV=development electron ."
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder"
   },
   "dependencies": {
     "express": "^4.19.2",
@@ -23,7 +23,20 @@
     "appId": "com.retrofm.app",
     "productName": "RetroFM",
     "directories": { "output": "dist" },
-    "win": { "target": "portable" },
-    "mac": { "target": "dmg" }
+    "files": [
+      "electron/**/*",
+      "server/**/*",
+      "renderer/**/*",
+      "data/.gitkeep",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraResources": [{ "from": "data", "to": "data" }],
+    "win": {
+      "target": [{ "target": "portable", "arch": ["x64"] }]
+    },
+    "mac": {
+      "target": "dmg"
+    }
   }
 }

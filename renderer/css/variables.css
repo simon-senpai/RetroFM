@@ -1,0 +1,22 @@
+:root {
+  --bg:           #06060e;
+  --bg-raised:    #0d0d1a;
+  --bg-card:      #0f0f1c;
+  --border:       rgba(255,255,255,0.07);
+  --accent:       #6666ff;
+  --accent-dim:   rgba(100,100,255,0.12);
+  --accent-star:  #9080ff;
+  --text-primary: #c8ccff;
+  --text-secondary: #556;
+  --text-muted:   #2a2a4a;
+  --green:        #4a9a5a;
+  --red-netease:  #e02020;
+  --white-card:   #f4f4f8;
+
+  --font-ui:   'Martian Mono', monospace;
+  --font-chat: 'IBM Plex Mono', monospace;
+
+  --canvas-w: 390px;
+  --canvas-h: 844px;
+  --radius:   12px;
+}

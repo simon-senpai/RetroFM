@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RetroFM</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/station.css">
+  <link rel="stylesheet" href="css/speaking.css">
+</head>
+<body>
+<div id="app">
+  <nav class="nav">
+    <div class="logo">
+      <span class="logo-star">✳</span>
+      RetroFM
+    </div>
+    <button class="btn-login" id="btn-login">♫ Login</button>
+  </nav>
+
+  <!-- Onboarding view -->
+  <div id="view-onboarding">
+    <div id="onboarding-content"></div>
+  </div>
+
+  <!-- Station view -->
+  <div id="view-station">
+    <div id="clock-zone">
+      <div id="dot-clock"></div>
+      <div id="clock-date"></div>
+      <div id="onair"><span>ON AIR</span></div>
+    </div>
+    <div id="player-bar">
+      <div id="eq-bars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div id="track-info">
+        <div id="track-name">—</div>
+        <div id="track-artist">—</div>
+      </div>
+      <div id="player-controls">
+        <button id="btn-prev">⏮</button>
+        <button id="btn-play">⏸</button>
+        <button id="btn-next">⏭</button>
+        <button id="btn-like">♡</button>
+      </div>
+    </div>
+    <div id="progress-bar"><div id="progress-fill"></div></div>
+    <div id="progress-times">
+      <span id="time-current">0:00</span>
+      <span id="time-total">0:00</span>
+    </div>
+    <div id="queue-section">
+      <div id="queue-header">
+        <span id="queue-name">—</span>
+        <span id="queue-count">—</span>
+      </div>
+      <div id="queue-list"></div>
+    </div>
+    <div id="chat-section">
+      <div id="chat-header">
+        <span class="dj-name">Sine</span>
+        <span class="live-badge">LIVE</span>
+      </div>
+      <div id="chat-history"></div>
+      <div id="chat-input-row">
+        <input type="text" id="chat-input" placeholder="Say something to the DJ...">
+        <button id="chat-send">↑</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Speaking view -->
+  <div id="view-speaking">
+    <div id="speaking-header">
+      <div class="logo">
+        <span class="logo-star">✳</span>
+        RetroFM
+      </div>
+      <span id="speaking-status">● Speaking...</span>
+      <span id="speaking-time">0:00</span>
+    </div>
+    <div id="dj-waveform"></div>
+    <div id="speaking-card">
+      <div id="episode-title">—</div>
+      <div id="episode-song">—</div>
+      <div id="song-progress-bar"><div id="song-progress-fill"></div></div>
+      <div id="song-times">
+        <span id="song-time-current">0:00</span>
+        <span id="song-time-total">0:00</span>
+      </div>
+      <div id="transcript"></div>
+      <div id="song-waveform"></div>
+      <div id="speaking-bottom">
+        <span id="dj-playback-time">0:00</span>
+        <button id="btn-pause-speaking">⏸</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audio-player"></audio>
+<audio id="dj-audio"></audio>
+
+<script src="js/api.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/waveform.js"></script>
+<script src="js/player.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/station.js"></script>
+<script src="js/speaking.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

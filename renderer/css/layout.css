@@ -1,0 +1,64 @@
+/* Fixed phone canvas — centred in window */
+#app {
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nav bar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px 10px;
+  flex-shrink: 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.logo-star {
+  font-size: 16px;
+  color: var(--accent-star);
+}
+.btn-login {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--red-netease);
+  background: rgba(220,30,30,0.1);
+  border: 1px solid rgba(220,30,30,0.25);
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: var(--font-ui);
+}
+.btn-login.logged-in {
+  color: var(--green);
+  background: rgba(74,154,90,0.1);
+  border-color: rgba(74,154,90,0.25);
+}
+
+/* Views */
+#view-onboarding,
+#view-station,
+#view-speaking {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+#view-onboarding.active,
+#view-station.active,
+#view-speaking.active {
+  display: flex;
+}
