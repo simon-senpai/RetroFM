@@ -1,0 +1,29 @@
+{
+  "name": "retrofm",
+  "version": "0.1.0",
+  "description": "Personal AI FM radio",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dev": "NODE_ENV=development electron ."
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "NeteaseCloudMusicApi": "^4.20.0",
+    "openai": "^4.52.0",
+    "cors": "^2.8.5",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.retrofm.app",
+    "productName": "RetroFM",
+    "directories": { "output": "dist" },
+    "win": { "target": "portable" },
+    "mac": { "target": "dmg" }
+  }
+}

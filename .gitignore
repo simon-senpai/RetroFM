@@ -1,6 +1,13 @@
 node_modules/
 .env
 data/session.json
+data/taste.md
+data/config.json
+data/programs.json
+data/pool.json
+data/tts/
+data/.session
+data/chat-history.json
 .superpowers/
 dist/
 out/
