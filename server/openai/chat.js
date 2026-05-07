@@ -1,5 +1,6 @@
 const { getClient } = require('./client')
 const { readTaste } = require('../taste/generate')
+const { readPreferences, appendPreference } = require('../taste/preferences')
 const path = require('path')
 const fs = require('fs-extra')
 
@@ -16,8 +17,11 @@ async function saveHistory(history) {
 }
 
 async function chat(userMessage, currentQueue) {
-  const taste   = await readTaste()
-  const history = await loadHistory()
+  const [taste, history, prefs] = await Promise.all([
+    readTaste(),
+    loadHistory(),
+    readPreferences(),
+  ])
   const ai = await getClient()
 
   const queueStr = currentQueue?.map(s => `${s.name} — ${s.artist}`).join('\n') || 'nothing queued'
@@ -25,14 +29,24 @@ async function chat(userMessage, currentQueue) {
   const messages = [
     {
       role: 'system',
-      content: `You are Sine, a female AI radio DJ on RetroFM — the listener's personal radio station. You communicate only in text when chatting (you speak aloud only when introducing new program blocks). Be warm, perceptive, and musically knowledgeable. Keep replies to 2-3 sentences. If the listener asks for a song or mood change, acknowledge it warmly and suggest you'll adjust the queue — respond with a JSON object: { "reply": "...", "queueRequest": { "mood": "...", "count": 5 } }. For general conversation, return { "reply": "..." }. Always return valid JSON.`
+      content: `You are Sine, a female AI radio DJ on RetroFM — the listener's personal radio station. Be warm, perceptive, and musically knowledgeable. Keep replies to 2-3 sentences.
+
+PREFERENCE DETECTION: If the listener states a music preference or rule (e.g. "I don't like rap", "more calm music in the morning", "no heavy songs tonight"), extract it as a clean rule and include it in your response.
+
+QUEUE REQUESTS: If they ask for a mood/genre change, include a queueRequest.
+
+Always return valid JSON in one of these shapes:
+- General chat: { "reply": "..." }
+- Preference stated: { "reply": "...", "preference": "concise rule as stated" }
+- Queue request: { "reply": "...", "queueRequest": { "mood": "...", "genre": "...", "count": 6 } }
+- Both: { "reply": "...", "preference": "...", "queueRequest": {...} }`
     },
     {
       role: 'user',
-      content: `Current queue:\n${queueStr}\n\nTaste profile summary:\n${taste?.slice(0,400)}`
+      content: `Current queue:\n${queueStr}\n\nListener taste:\n${taste?.slice(0, 500)}\n\n${prefs ? `Known preferences:\n${prefs}\n\n` : ''}`
     },
     ...history.flatMap(h => [
-      { role: 'user', content: h.user },
+      { role: 'user',      content: h.user },
       { role: 'assistant', content: h.assistant }
     ]),
     { role: 'user', content: userMessage }
@@ -46,6 +60,12 @@ async function chat(userMessage, currentQueue) {
   })
 
   const parsed = JSON.parse(res.choices[0].message.content)
+
+  // Persist any detected preference
+  if (parsed.preference) {
+    await appendPreference(parsed.preference)
+  }
+
   await saveHistory([...history, { user: userMessage, assistant: parsed.reply }])
   return parsed
 }

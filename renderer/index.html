@@ -18,6 +18,7 @@
     <div class="logo">
       <span class="logo-star">✳</span>
       RetroFM
+      <span id="onair-badge">ON AIR</span>
     </div>
     <button class="btn-login" id="btn-login">♫ Login</button>
   </nav>
@@ -32,7 +33,6 @@
     <div id="clock-zone">
       <div id="dot-clock"></div>
       <div id="clock-date"></div>
-      <div id="onair"><span>ON AIR</span></div>
     </div>
     <div id="player-bar">
       <div id="eq-bars">
@@ -43,10 +43,10 @@
         <div id="track-artist">—</div>
       </div>
       <div id="player-controls">
-        <button id="btn-prev">⏮</button>
-        <button id="btn-play">⏸</button>
-        <button id="btn-next">⏭</button>
-        <button id="btn-like">♡</button>
+        <button id="btn-prev"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="2.5" height="12"/><polygon points="2.5,6 12,0 12,12"/></svg></button>
+        <button id="btn-play"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="0" y="0" width="4" height="12"/><rect x="7" y="0" width="4" height="12"/></svg></button>
+        <button id="btn-next"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><polygon points="0,0 0,12 9.5,6"/><rect x="9.5" y="0" width="2.5" height="12"/></svg></button>
+        <button id="btn-like"><svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M6,10.3 C5.2,9.6 1,6.6 1,4 C1,2.3 2.3,1 4,1 C5,1 5.7,1.6 6,2.1 C6.3,1.6 7,1 8,1 C9.7,1 11,2.3 11,4 C11,6.6 6.8,9.6 6,10.3Z"/></svg></button>
       </div>
     </div>
     <div id="progress-bar"><div id="progress-fill"></div></div>
@@ -57,7 +57,10 @@
     <div id="queue-section">
       <div id="queue-header">
         <span id="queue-name">—</span>
-        <span id="queue-count">—</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span id="queue-count">—</span>
+          <button id="btn-refresh" title="New program">↺</button>
+        </div>
       </div>
       <div id="queue-list"></div>
     </div>

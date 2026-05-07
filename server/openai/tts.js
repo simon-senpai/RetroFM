@@ -11,7 +11,8 @@ async function synthesise(text, filename) {
   const ai = await getClient()
   const mp3 = await ai.audio.speech.create({
     model: 'tts-1-hd',
-    voice: 'shimmer',
+    voice: 'nova',
+    speed: 1.0,
     input: text,
   })
 

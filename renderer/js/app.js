@@ -88,6 +88,7 @@ async function startStation() {
   showView('view-station')
   document.getElementById('btn-login').textContent = '✓ NetEase'
   document.getElementById('btn-login').classList.add('logged-in')
+  document.getElementById('btn-refresh').addEventListener('click', () => Station.refresh())
   await Station.init()
 }
 

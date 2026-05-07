@@ -28,7 +28,8 @@ const Speaking = {
     line.innerHTML = `<span class="ts">${Speaking._fmt(timestampSec)} →</span>${text}`
 
     const transcript = document.getElementById('transcript')
-    transcript.insertBefore(line, transcript.firstChild)
+    transcript.appendChild(line)
+    transcript.scrollTop = transcript.scrollHeight
   },
 
   updateSongProgress(currentSec, durationSec) {

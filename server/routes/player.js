@@ -5,9 +5,8 @@ const { getCookie } = require('../netease/client')
 router.get('/url/:id', async (req, res) => {
   try {
     const cookie = getCookie()
-    const { data } = await song_url({ id: req.params.id, cookie })
-    const url = data?.[0]?.url
-    if (!url) return res.status(404).json({ error: 'No URL for this track' })
+    const result = await song_url({ id: req.params.id, cookie })
+    const url = result.body?.data?.[0]?.url || null
     res.json({ url })
   } catch(e) {
     res.status(500).json({ error: e.message })

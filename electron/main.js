@@ -10,8 +10,9 @@ async function createWindow() {
   const port = await startServer()
 
   win = new BrowserWindow({
-    width: 390,
-    height: 844,
+    width: 375,
+    height: 667,
+    useContentSize: true,
     resizable: false,
     maximizable: false,
     fullscreenable: false,
